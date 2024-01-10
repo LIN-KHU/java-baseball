@@ -8,10 +8,7 @@
 ## ✉️ 미션 제출 방법
 
 - 미션 구현을 완료한 후 GitHub을 통해 제출해야 한다.
-  - GitHub을 활용한 제출 방법은 [프리코스 과제 제출 문서](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 를 참고해 제출한다.
-- GitHub에 미션을 제출한 후 [우아한테크코스 지원 플랫폼](https://apply.techcourse.co.kr) 에 접속하여 프리코스 과제를 제출한다.
-  - 자세한 방법은 [링크](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse#제출-가이드) 를 참고한다.
-  - **Pull Request만 보내고, 지원 플랫폼에서 과제를 제출하지 않으면 최종 제출하지 않은 것으로 처리되니 주의한다.**
+- 진행 및 제출 방법은 [미션 진행 및 제출 방법](https://github.com/LIN-KHU/linkhu-docs/blob/main/missionguide/missionguide.md) 문서를 참고한다.
 
 ## ✔️ 과제 제출 전 체크리스트 - 0점 방지
 
@@ -100,7 +97,6 @@
   - 예를 들어 while문 안에 if문이 있으면 들여쓰기는 2이다.
   - 힌트: indent(인덴트, 들여쓰기) depth를 줄이는 좋은 방법은 함수(또는 메소드)를 분리하면 된다.
 - 3항 연산자를 쓰지 않는다.
-- 함수(또는 메소드)가 한 가지 일만 하도록 최대한 작게 만들어라.
 
 ### 프로그래밍 요구사항 - Randoms, Console
 
@@ -109,17 +105,24 @@
   - 사용자가 입력하는 값은 `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용한다.
 - 프로그램 구현을 완료했을 때 `src/test/java` 디렉터리의 `ApplicationTest`에 있는 모든 테스트 케이스가 성공해야 한다. **테스트가 실패할 경우 0점 처리한다.**
 
-<br>
+##   추가된 요구사항
+- 함수(또는 메서드)의 길이가 10라인을 넘어가지 않도록 구현한다. 
+  - 함수(또는 메서드)가 한 가지 일만 잘하도록 구현한다.
+- 메서드의 파라미터 개수는 최대 3개까지만 허용한다.
+- 비즈니스 로직과 출력을 분리한다.
+  - InputView 클래스에서만 camp.nextstep.edu.missionutils.Console 의 readLine() 메서드를 이용해 사용자의 입력을 받을 수 있다.
+  - OutputView 클래스에서만 Console 출력을 할 수 있다.
+   
+  
+  <br>
 
 ---
 
 ## 📈 과제 진행 요구사항
 
-- 미션은 [java-baseball-precourse](https://github.com/woowacourse/java-baseball-precourse) 저장소를 Fork/Clone해 시작한다.
-- **기능을 구현하기 전에 java-baseball-precourse/README.md 파일에 구현할 기능 목록을 정리**해 추가한다.
-- **Git의 커밋 단위는 앞 단계에서 README.md 파일에 정리한 기능 목록 단위**로 추가한다.
-  - [AngularJS Commit Message Conventions](https://gist.github.com/stephenparish/9941e89d80e2bc58a153) 참고해 commit log를 남긴다.
-- 과제 진행 및 제출 방법은 [프리코스 과제 제출 문서](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 를 참고한다.
+- 미션은 해당 저장소를 Fork/Clone함으로부터 시작된다.
+- 기능을 구현하기 전에 java-baseball/docs/README.md 파일에 구현할 기능 목록을 정리해 추가한다.
+- Git의 커밋 단위는 앞 단계에서 README.md 파일에 정리한 기능 목록 단위로 추가한다.
 
 <br>
 
