@@ -109,6 +109,7 @@
 - 함수(또는 메서드)의 길이가 10라인을 넘어가지 않도록 구현한다. 
   - 함수(또는 메서드)가 한 가지 일만 잘하도록 구현한다.
 - 메서드의 파라미터 개수는 최대 3개까지만 허용한다.
+- Java Enum을 적용한다.
 - 비즈니스 로직과 출력을 분리한다.
   - InputView 클래스에서만 camp.nextstep.edu.missionutils.Console 의 readLine() 메서드를 이용해 사용자의 입력을 받을 수 있다.
   - OutputView 클래스에서만 Console 출력을 할 수 있다.
