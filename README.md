@@ -124,6 +124,9 @@
 - 기능을 구현하기 전에 java-baseball/docs/README.md 파일에 구현할 기능 목록을 정리해 추가한다.
 - Git의 커밋 단위는 앞 단계에서 README.md 파일에 정리한 기능 목록 단위로 추가한다.
 
+## 추가된 과제 진행 요구사항
+- 커밋 메시지 [컨벤션 가이드](https://gist.github.com/stephenparish/9941e89d80e2bc58a153)를 참고해 커밋 메시지를 작성한다.
+
 <br>
 
 ---
