@@ -131,6 +131,15 @@
 
 ---
 
+## 구현할 기능들
+
+- 사용자 입력 받기
+- 게임 결과 출력
+- 입력값에 대한 비교값 출력하기
+- 게임 종료 의사 확인
+
+---
+
 ## 📝 License
 
 This project is [MIT](https://github.com/woowacourse/java-baseball-precourse/blob/master/LICENSE) licensed.
