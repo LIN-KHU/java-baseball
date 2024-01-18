@@ -9,22 +9,22 @@ public class Application {
     public static void main(String[] args) {
         //TODO: 숫자 야구 게임 구현
 
-        List<Integer> answer = makeAnswer();
+
         Scanner scanner = new Scanner(System.in);
         while (true) {
+            List<Integer> com = makeAnswer();
             while (true) {
                 List<Integer> player = getNumbers();
                 int ball = 0;
                 int strike = 0;
-                List<Integer> com = makeAnswer();
 
                 if (player.get(0) == com.get(0)) strike++;
                 if (player.get(1) == com.get(1)) strike++;
                 if (player.get(2) == com.get(2)) strike++;
 
-                if (player.get(0) == com.get(1) || player.get(0) == com.get(2)) ball++;
-                if (player.get(1) == com.get(0) || player.get(1) == com.get(2)) ball++;
-                if (player.get(2) == com.get(0) || player.get(2) == com.get(1)) ball++;
+                if ((player.get(0) == com.get(1)) || (player.get(0) == com.get(2))) ball++;
+                if ((player.get(1) == com.get(0)) || (player.get(1) == com.get(2))) ball++;
+                if ((player.get(2) == com.get(0)) || (player.get(2) == com.get(1))) ball++;
 
                 if (strike == 3) {
                     System.out.println("3스트라이크");
@@ -38,7 +38,7 @@ public class Application {
                     } else if (strike == 0 && ball != 0) {
                         System.out.printf("%d볼\n", ball);
                     } else {
-                        System.out.printf("%d볼 %d스트라이크", ball, strike);
+                        System.out.printf("%d볼 %d스트라이크\n", ball, strike);
                     }
                 }
 
@@ -46,8 +46,8 @@ public class Application {
             }
             // 예외처리 하기
             System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            boolean restart = scanner.nextBoolean();
-            if(!restart){
+            int restart = scanner.nextInt();
+            if(restart == 0){
                 System.exit(0);
             }
         }
@@ -62,7 +62,7 @@ public class Application {
 
         List<Integer> Numbers = new ArrayList<Integer>(3);
         Scanner scanner = new Scanner(System.in);
-        System.out.println("숫자를 입력해주세요 : ");
+        System.out.print("숫자를 입력해주세요 : ");
         int num = scanner.nextInt();
         while (num > 0) {
             Numbers.add(num % 10);
