@@ -1,5 +1,6 @@
 package baseball.view;
 
+import baseball.constants.GameStatusValue;
 import baseball.exception.UndefinedCommandException;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
@@ -17,9 +18,9 @@ public class InputViewImplement implements InputView {
     }
 
     @Override
-    public String getRestartAnswer() {
-        String input = Console.readLine();
-        if (!(input.contains("1") || input.contains("2"))) {
+    public int getRestartAnswer() {
+        int input = Integer.parseInt(Console.readLine());
+        if (input != GameStatusValue.GAME_RESTART && input != GameStatusValue.GAME_EXIT) {
             throw new UndefinedCommandException();
         }
         return input;
