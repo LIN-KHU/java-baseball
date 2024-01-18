@@ -29,7 +29,7 @@ public class OutputView {
             System.out.println(resultList.get(1) + "스트라이크");
         }
         if ((resultList.get(0) != 0) && (resultList.get(1) == 0)) {
-            System.out.println(resultList.get(1) + "볼");
+            System.out.println(resultList.get(0) + "볼");
         }
         if (resultList.get(0) != 0 && resultList.get(1) != 0) {
             System.out.println(resultList.get(0) + "볼 " + resultList.get(1) + "스트라이크");
