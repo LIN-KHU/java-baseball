@@ -17,4 +17,13 @@ public class InputView {
         }
     }
 
+    public static String askContinueGame() {
+        String userInput = Console.readLine();
+        Boolean gameStatus = validateInputGameStatus(userInput);
+        if (!gameStatus) {
+            System.exit(0);
+        }
+        return userInput;
+    }
+
 }
