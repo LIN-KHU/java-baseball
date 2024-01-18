@@ -1,9 +1,10 @@
 package baseball;
 import java.util.*;
 import camp.nextstep.edu.missionutils.Randoms;
-import com.sun.xml.internal.ws.api.ha.StickyFeature;
 
+import static baseball.view.InputView.askContinueGame;
 import static baseball.view.InputView.getUserInput;
+import static baseball.view.OutputView.printRoundResult;
 
 public class Application {
     public static void main(String[] args) {
@@ -45,6 +46,15 @@ public class Application {
 
     public static Boolean validateInputNewGameStatus(String userInput) {
         return (userInput.equals("1") || userInput.equals("2"));
+    }
+
+    public static void playGame() {
+        do {
+            getUserInput();
+            createComputerNumber();
+            countBallAndStrike();
+            printRoundResult();
+        } while (!printRoundResult().equals("2"));
     }
 
 }
