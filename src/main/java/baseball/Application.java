@@ -23,17 +23,16 @@ public class Application {
         return inputStatus;
     }
 
-    public static String createComputerNumber() {
-        String computerNumber = "";
+    public static ArrayList<Integer> createComputerNumber() {
+        ArrayList<Integer> computerNumberList = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
             int randomIntegerTypeNumber = Randoms.pickNumberInRange(1,9);
-            if (computerNumber.contains(Integer.toString(randomIntegerTypeNumber))) {
+            if (computerNumberList.contains(randomIntegerTypeNumber)) {
                 continue;
             }
-            String randomStringTypeNumber = Integer.toString(randomIntegerTypeNumber);
-            computerNumber = computerNumber + randomStringTypeNumber;
+            computerNumberList.add(randomIntegerTypeNumber);
         }
-        return computerNumber;
+        return computerNumberList;
     }
 
     public static ArrayList<Integer> countBallAndStrike() {
