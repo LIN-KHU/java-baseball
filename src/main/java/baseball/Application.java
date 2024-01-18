@@ -26,8 +26,11 @@ public class Application {
     public static String createComputerNumber() {
         String computerNumber = "";
         for (int i = 0; i < 3; i++) {
-            Integer randomIntegerTypeNumber = Randoms.pickNumberInRange(1,9);
-            String randomStringTypeNumber = String.valueOf(randomIntegerTypeNumber);
+            int randomIntegerTypeNumber = Randoms.pickNumberInRange(1,9);
+            if (computerNumber.contains(Integer.toString(randomIntegerTypeNumber))) {
+                continue;
+            }
+            String randomStringTypeNumber = Integer.toString(randomIntegerTypeNumber);
             computerNumber = computerNumber + randomStringTypeNumber;
         }
         return computerNumber;
@@ -48,7 +51,7 @@ public class Application {
     }
 
     public static Boolean validateInputNewGameStatus(String userInput) {
-        return (userInput.equals("1") || userInput.equals("2"));
+        return userInput.equals("1") || userInput.equals("2");
     }
 
     public static void playGame() {
