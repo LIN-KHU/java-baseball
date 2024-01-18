@@ -2,6 +2,7 @@ package baseball.view;
 import java.util.*;
 import camp.nextstep.edu.missionutils.Console;
 import static baseball.Application.validateInput;
+import static baseball.Application.validateInputGameStatus;
 
 public class InputView {
     public static String getUserInput() {
