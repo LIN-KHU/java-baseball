@@ -3,7 +3,7 @@ package baseball.view;
 import java.util.StringJoiner;
 
 public class OutputView {
-    public void instruction() {
+    public void printGuessNumberInstruction() {
         System.out.print("숫자를 입력해주세요 : ");
     }
 
