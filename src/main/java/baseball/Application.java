@@ -50,7 +50,6 @@ public class Application {
             }
         }
         return true;
-
     }
 
     public static void validateUserNumberInput(String userInput) {
@@ -58,7 +57,11 @@ public class Application {
             System.exit(0);
         }
         for (int i = 0; i < 3; i++) {
-            if (userInput.charAt(i) == '0') {
+            String charTypeNumber = String.valueOf(userInput.charAt(i));
+            if (charTypeNumber.equals("0")) {
+                System.exit(0);
+            }
+            if (i > 0 && userInput.contains(charTypeNumber)) {
                 System.exit(0);
             }
         }
