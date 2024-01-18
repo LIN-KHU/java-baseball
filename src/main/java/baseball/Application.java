@@ -15,11 +15,12 @@ public class Application {
     public static Boolean validateInput(String userInput) {
         boolean inputStatus = true;
         if (userInput.length() != 3) {
-            return false;
+            inputStatus = false;
         }
         for (int i = 0; i < 3; i++) {
             if (userInput.charAt(i) == '0') {
-                return false;
+                inputStatus = false;
+                break;
             }
         }
         return inputStatus;
