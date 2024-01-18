@@ -19,7 +19,6 @@ public class GameClient {
     private final InputView inputView;
     private final OutputView outputView;
     private final ScoreCalculator scoreCalculator;
-    private BallNumber randomCreatedNumber;
 
     public GameClient(InputView inputView, OutputView outputView, ScoreCalculator scoreCalculator) {
         this.inputView = inputView;
@@ -47,10 +46,6 @@ public class GameClient {
         outputView.printRetryCommand();
         int answer = inputView.getRestartAnswer();
         return (answer == GameStatusValue.GAME_RESTART);
-    }
-
-    public void reset() {
-        randomCreatedNumber = new BallNumber(new RandomNumberGenerator().makeRandomNumbers());
     }
 
     private void checkDistinctNumbers(List<Integer> numbers) {
