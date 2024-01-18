@@ -4,6 +4,7 @@ import static baseball.constants.GameStatusValue.NUMBER_LIMIT;
 
 import baseball.constants.GameStatusValue;
 import baseball.domain.BallNumber;
+import baseball.domain.RandomNumberGenerator;
 import baseball.domain.Score;
 import baseball.domain.ScoreCalculator;
 import baseball.exception.DistinctNumberInputException;
@@ -24,11 +25,11 @@ public class GameClient {
         this.inputView = inputView;
         this.outputView = outputView;
         this.scoreCalculator = scoreCalculator;
-        this.randomCreatedNumber = new BallNumber(scoreCalculator.makeComputerNumber());
     }
 
     public void run() {
         Score score;
+        BallNumber randomCreatedNumber = new BallNumber(new RandomNumberGenerator().makeRandomNumbers());
         do {
             outputView.printInputNumber();
             List<Integer> number = inputView.getNumbers();
@@ -41,10 +42,15 @@ public class GameClient {
         } while (!score.isThreeStrike());
         outputView.printEndMessage();
     }
+
     public boolean restart() {
         outputView.printRetryCommand();
-        String answer = inputView.getRestartAnswer();
-        return answer.equals(GameStatusValue.GAME_RESTART);
+        int answer = inputView.getRestartAnswer();
+        return (answer == GameStatusValue.GAME_RESTART);
+    }
+
+    public void reset() {
+        randomCreatedNumber = new BallNumber(new RandomNumberGenerator().makeRandomNumbers());
     }
 
     private void checkDistinctNumbers(List<Integer> numbers) {

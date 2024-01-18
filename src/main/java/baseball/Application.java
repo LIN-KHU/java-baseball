@@ -13,7 +13,7 @@ public class Application {
         InputView inputView = new InputViewImplement();
         OutputView outputView = new OutputViewImplement();
         RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
-        ScoreCalculator scoreCalculator = new ScoreCalculator(randomNumberGenerator);
+        ScoreCalculator scoreCalculator = new ScoreCalculator();
         GameClient gameClient = new GameClient(inputView, outputView, scoreCalculator);
 
         do {

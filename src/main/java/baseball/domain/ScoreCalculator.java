@@ -1,18 +1,14 @@
 package baseball.domain;
 
 
-import java.util.List;
 import java.util.stream.Stream;
 
 public class ScoreCalculator {
-    BallNumber randomCreatedNumber;
 
-    public ScoreCalculator(RandomNumberGenerator randomNumberGenerator) {
-        List<Integer> integers = randomNumberGenerator.makeRandomNumbers();
-        this.randomCreatedNumber = new BallNumber(integers);
+    public ScoreCalculator() {
     }
 
-    public Score createScore(BallNumber ballNumber) {
+    public Score createScore(BallNumber ballNumber, BallNumber randomCreatedNumber) {
         return new Score(countStrike(ballNumber, randomCreatedNumber), countBall(ballNumber, randomCreatedNumber));
     }
 
