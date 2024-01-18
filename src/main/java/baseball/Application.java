@@ -8,10 +8,12 @@ public class Application {
 
     }
 
-    public static void validateInput(String userInput) {
+    public static Boolean validateInput(String userInput) {
+        boolean inputStatus = true;
         if (userInput.length() != 3) {
-            throw new IllegalArgumentException("[ERROR] 입력값은 3자리 숫자여야 합니다");
+            return false;
         }
+        return inputStatus;
     }
 
     public static String createComputerNumber() {
