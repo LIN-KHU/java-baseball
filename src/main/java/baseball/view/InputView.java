@@ -5,14 +5,18 @@ import static baseball.Application.validateInput;
 import static baseball.Application.validateInputNewGameStatus;
 
 public class InputView {
-    public static String getUserInput() {
+    public static ArrayList<Integer> getUserInput() {
+        ArrayList<Integer> userInputList = new ArrayList<>();
         System.out.print("숫자를 입력해주세요 : ");
         String userInput = Console.readLine();
         boolean inputStatus = validateInput(userInput);
         if (!inputStatus) {
             System.exit(0);
         }
-        return userInput;
+        for (int i = 0; i < 3; i++) {
+            userInputList.add((int) userInput.charAt(i));
+        }
+        return userInputList;
     }
 
     public static String askContinueGame() {
