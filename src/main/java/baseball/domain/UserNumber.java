@@ -14,7 +14,7 @@ public class UserNumber {
         this.userNumber = InputView.inputUserNumber();
     }
 
-    public int getUserNumber() {
+    public int getUserNumber() { 
         return this.userNumber;
     }
 }

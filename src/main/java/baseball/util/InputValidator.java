@@ -17,7 +17,7 @@ public class InputValidator {
     }
 
     private static void validateNullOrNot(String value) {
-        if (value.isEmpty() || value == null) {
+        if (value.isEmpty()) {
             throw new IllegalArgumentException("값을 입력하세요.");
         }
     }
