@@ -6,16 +6,14 @@ import static baseball.Application.validateInputGameStatus;
 
 public class InputView {
     public static String getUserInput() {
-        while(true) {
-            System.out.println("숫자를 입력해주세요 : ");
-            String userInput = Console.readLine();
-            try {
-                validateInput(userInput);
-                return userInput;
-            } catch (IllegalArgumentException error) {
-                System.out.println(error.getMessage());
-            }
+        String gameStatus = "error";
+        System.out.print("숫자를 입력해주세요 : ");
+        String userInput = Console.readLine();
+        boolean inputStatus = validateInput(userInput);
+        if (inputStatus) {
+            gameStatus = userInput;
         }
+        return gameStatus;
     }
 
     public static String askContinueGame() {
