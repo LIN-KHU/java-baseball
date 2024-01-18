@@ -13,10 +13,7 @@ public class Application {
     }
 
     public static Boolean validateInput(String userInput) {
-        boolean inputStatus = true;
-        if (userInput.length() != 3) {
-            inputStatus = false;
-        }
+        boolean inputStatus = (userInput.length() == 3);
         for (int i = 0; i < 3; i++) {
             if (userInput.charAt(i) == '0') {
                 inputStatus = false;
