@@ -40,11 +40,7 @@ public class Application {
     }
 
     public static Boolean validateInputNewGameStatus(String userInput) {
-        boolean inputStatusForNewGame = false;
-        if (userInput.equals("1") || userInput.equals("2")) {
-            inputStatusForNewGame = true;
-        }
-        return inputStatusForNewGame;
+        return (userInput.equals("1") || userInput.equals("2"));
     }
 
 }
