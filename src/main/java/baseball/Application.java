@@ -39,12 +39,12 @@ public class Application {
         return comparisonResult;
     }
 
-    public static Boolean validateInputGameStatus(String userInput) {
-        boolean inputStatus = false;
+    public static Boolean validateInputNewGameStatus(String userInput) {
+        boolean inputStatusForNewGame = false;
         if (userInput.equals("1") || userInput.equals("2")) {
-            inputStatus = true;
+            inputStatusForNewGame = true;
         }
-        return inputStatus;
+        return inputStatusForNewGame;
     }
 
 }
