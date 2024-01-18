@@ -18,7 +18,7 @@ public class RandomNumberGenerator {
             if (!randNumbers.contains(randNum)) {
                 randNumbers.add(randNum);
             }
-        } while (randNumbers.size() < BallNumber.LENGTH);
+        } while (randNumbers.size() < BallNumber.NUMBER_MAX_LENGTH);
         return randNumbers;
     }
 
