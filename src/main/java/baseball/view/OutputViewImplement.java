@@ -1,6 +1,6 @@
 package baseball.view;
 
-import baseball.domain.JudgeResult;
+import baseball.domain.Score;
 
 public class OutputViewImplement implements OutputView{
     @Override
@@ -9,8 +9,8 @@ public class OutputViewImplement implements OutputView{
     }
 
     @Override
-    public void printJudgeResult(JudgeResult judgeResult) {
-        System.out.println(judgeResult);
+    public void printJudgeResult(Score score) {
+        System.out.println(score);
     }
 
     @Override

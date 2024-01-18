@@ -1,11 +1,11 @@
 package baseball.view;
 
-import baseball.domain.JudgeResult;
+import baseball.domain.Score;
 
 public interface OutputView {
     void printInputNumber();
 
-    void printJudgeResult(JudgeResult judgeResult);
+    void printJudgeResult(Score score);
 
     void printEndMessage();
 
