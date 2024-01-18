@@ -18,7 +18,7 @@ public class Application {
             return false;
         }
         for (int i = 0; i < 3; i++) {
-            if (userInput.charAt(i) == 0) {
+            if (userInput.charAt(i) == '0') {
                 return false;
             }
         }
