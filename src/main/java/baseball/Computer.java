@@ -18,9 +18,13 @@ public class Computer {
     public static int getRandom() {
         return Randoms.pickNumberInRange(1, 10);
     }
+
     public static boolean checkRandomNum() {
-        return randomNum.indexOf(0) != randomNum.indexOf(1) && randomNum.indexOf(1) != randomNum.indexOf(2) && randomNum.indexOf(2) != randomNum.indexOf(0);
+        return randomNum.charAt(0) != randomNum.charAt(1) &&
+                randomNum.charAt(1) != randomNum.charAt(2) &&
+                randomNum.charAt(2) != randomNum.charAt(0);
     }
+
 
 
 }

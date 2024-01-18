@@ -14,7 +14,7 @@ public class InputView {
             System.exit(0);
         }
     }
-    public static void ifRestart() {
+    public static void checkIfRestart() {
         String inputRestart = Console.readLine();
         if (inputRestart.equals("1")) {
             Computer.genRandomNum();

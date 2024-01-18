@@ -1,5 +1,7 @@
 package baseball.view;
 
+import baseball.Computer;
+
 import static baseball.view.InputView.inputNum;
 
 public class OutputView {
@@ -8,15 +10,16 @@ public class OutputView {
     public static int ball = 0;
 
     public static void checkResult(){
+        Computer.genRandomNum();
         checkStrike();
         checkBallFirst();
         checkBallSecond();
         checkBallThird();
-        gameResult();
+        printGameResult();
     }
 
     public static void checkStrike() {
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < inputNum.length(); i++) {
             if (inputNum.charAt(i)==randomNum.charAt(i)) {
                 strike++;
             }
@@ -47,11 +50,11 @@ public class OutputView {
         }
     }
 
-    public static void gameResult() {
+    public static void printGameResult() {
         switch(strike){
             case 3: System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
                 System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-                InputView.ifRestart();
+                InputView.checkIfRestart();
                 break;
             case 0:
                 if (ball == 0) {
