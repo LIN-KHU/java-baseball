@@ -57,14 +57,25 @@ public class Application {
             System.exit(0);
         }
         for (int i = 0; i < 3; i++) {
-            String charTypeNumber = String.valueOf(userInput.charAt(i));
-            if (charTypeNumber.equals("0")) {
+            String StringTypeNumber = String.valueOf(userInput.charAt(i));
+            char charTypeNumber = userInput.charAt(i);
+            if (StringTypeNumber.equals("0")) {
                 System.exit(0);
             }
-            if (i > 0 && userInput.contains(charTypeNumber)) {
+            if (countDuplicateNumbers(userInput, charTypeNumber) > 1) {
                 System.exit(0);
             }
         }
+    }
+
+    public static Integer countDuplicateNumbers(String userInput, char number) {
+        int count = 0;
+        for (int i = 0; i < 3; i++) {
+            if (userInput.charAt(i) == number) {
+                count++;
+            }
+        }
+        return count;
     }
 
     public static ArrayList<Integer> createUserNumberList(String userInput) {
