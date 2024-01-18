@@ -8,7 +8,7 @@ import static baseball.view.OutputView.printRoundResult;
 
 public class Application {
     public static void main(String[] args) {
-        //TODO: 숫자 야구 게임 구현
+        playGame();
 
     }
 
@@ -16,6 +16,11 @@ public class Application {
         boolean inputStatus = true;
         if (userInput.length() != 3) {
             return false;
+        }
+        for (int i = 0; i < 3; i++) {
+            if (userInput.charAt(i) == 0) {
+                return false;
+            }
         }
         return inputStatus;
     }
