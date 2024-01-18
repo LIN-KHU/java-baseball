@@ -1,7 +1,5 @@
 package baseball.domain;
 
-import baseball.exception.InvalidLengthException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class BallNumber {
@@ -10,9 +8,6 @@ public class BallNumber {
     private final List<Integer> numbers;
 
     public BallNumber(List<Integer> numbers) {
-        if (numbers.size() != NUMBER_MAX_LENGTH) {
-            throw new InvalidLengthException();
-        }
         this.numbers = numbers;
     }
 
