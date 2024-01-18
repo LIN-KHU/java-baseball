@@ -25,4 +25,17 @@ public class Application {
         return computerNumber;
     }
 
+    public static ArrayList<Integer> countBallAndStrike(String userNumber, String computerNumber) {
+        ArrayList<Integer> comparisonResult = new ArrayList<>();
+        int ballNumber = 0, strikeNumber = 0;
+        for (int i = 0; i < 3; i++) {
+            if (userNumber.charAt(i) == computerNumber.charAt(i)) {
+                strikeNumber++;
+                continue;
+            } ballNumber++;
+        }
+        comparisonResult.add(ballNumber,strikeNumber);
+        return comparisonResult;
+    }
+
 }
