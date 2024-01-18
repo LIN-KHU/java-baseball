@@ -1,38 +1,41 @@
 package baseball.domain;
 
-public class CompareNumbers {
-    private static int ball = 0;
-    private static int strike = 0;
+import java.util.ArrayList;
+import java.util.List;
 
-    public static void compareNumbers(String computerNumberStr, String userNumberStr) {
-        countBall(computerNumberStr, userNumberStr);
-        countStrike(computerNumberStr, userNumberStr);
+public class CompareNumbers {
+
+    public static List<Integer> compareNumbers(int computerNumber, int userNumber) {
+        String computerNumberStr = convertIntegerToString(computerNumber);
+        String userNumberStr = convertIntegerToString(userNumber);
+        List<Integer> list = new ArrayList<Integer>();
+        list.add(countBall(computerNumberStr, userNumberStr));
+        list.add(countStrike(computerNumberStr, userNumberStr));
+        return list;
     }
 
-    private static void countBall(String computerNumberStr, String userNumberStr) {
+    private static String convertIntegerToString(int number) {
+        return Integer.toString(number);
+    }
+
+    private static int countBall(String computerNumberStr, String userNumberStr) {
+        int ball = 0;
         for (int i = 0; i < userNumberStr.length(); i++) {
             int indexNum = computerNumberStr.indexOf(userNumberStr.charAt(i));
-            if (indexNum > 0 && userNumberStr.charAt(i) != computerNumberStr.charAt(i)) {
+            if ((indexNum >= 0) && (userNumberStr.charAt(i) != computerNumberStr.charAt(i))) {
                 ball += 1;
             }
         }
+        return ball;
     }
 
-    private static void countStrike(String computerNumberStr, String userNumberStr) {
+    private static int countStrike(String computerNumberStr, String userNumberStr) {
+        int strike = 0;
         for (int i = 0; i < userNumberStr.length(); i++) {
             if (userNumberStr.charAt(i) == computerNumberStr.charAt(i)) {
                 strike += 1;
             }
         }
-    }
-
-    public static int getBall() {
-        return ball;
-    }
-
-    public static int getStrike() {
         return strike;
     }
-
-
 }

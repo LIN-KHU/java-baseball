@@ -2,11 +2,11 @@ package baseball.domain;
 
 import baseball.view.InputView;
 
-public class UserNumber {
+public class User {
 
     private int userNumber;
 
-    public UserNumber() {
+    public User() {
 
     }
 

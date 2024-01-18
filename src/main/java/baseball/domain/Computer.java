@@ -2,14 +2,25 @@ package baseball.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-public class ComputerNumber {
+import java.util.*;
+
+public class Computer {
     private final int computerNumber;
-    public ComputerNumber() {
+    public Computer() {
         this.computerNumber = createThreeDigitNumberFromRandomNumbers();
     }
 
     private int createThreeDigitNumberFromRandomNumbers() {
-        return generateRandomNumber() * 100 + generateRandomNumber() * 10 + generateRandomNumber();
+        Set<Integer> numSet = new HashSet<Integer>();
+        while (true) {
+            int num = generateRandomNumber();
+            numSet.add(num);
+            if (numSet.size() >= 3) {
+                break;
+            }
+        }
+        Integer[] numArray = numSet.toArray(new Integer[0]);
+        return numArray[0] * 100 + numArray[1] * 10 + numArray[2];
     }
 
     private int generateRandomNumber() {
