@@ -37,14 +37,17 @@ public class Application {
     }
 
     public static ArrayList<Integer> countBallAndStrike() {
-        String userNumber = getUserInput(), computerNumber = createComputerNumber();
+        ArrayList<Integer> userNumberList = getUserInput(), computerNumberList = createComputerNumber();
         ArrayList<Integer> comparisonResult = new ArrayList<>();
         int ballNumber = 0, strikeNumber = 0;
         for (int i = 0; i < 3; i++) {
-            if (userNumber.charAt(i) == computerNumber.charAt(i)) {
+            if (userNumberList.get(i).equals(computerNumberList.get(i))) {
                 strikeNumber++;
                 continue;
-            } ballNumber++;
+            }
+            if (computerNumberList.contains(userNumberList.get(i))) {
+                ballNumber++;
+            }
         }
         comparisonResult.add(ballNumber,strikeNumber);
         return comparisonResult;
