@@ -18,6 +18,21 @@ public class Application {
         }
     }
 
+    public static ArrayList<Integer> createComputerNumber() {
+        ArrayList<Integer> computerNumberList = new ArrayList<>();
+        while (true) {
+            int randomIntegerNumber = Randoms.pickNumberInRange(1,9);
+            if (computerNumberList.contains(randomIntegerNumber)) {
+                continue;
+            }
+            computerNumberList.add(randomIntegerNumber);
+            if (computerNumberList.size() == 3) {
+                break;
+            }
+        }
+        return computerNumberList;
+    }
+
     public static Boolean playGame(ArrayList<Integer> computerNumberList) {
         while (true) {
             printIntroMessage();
@@ -57,21 +72,6 @@ public class Application {
         return userNumberList;
     }
 
-    public static ArrayList<Integer> createComputerNumber() {
-        ArrayList<Integer> computerNumberList = new ArrayList<>();
-        while (true) {
-            int randomIntegerNumber = Randoms.pickNumberInRange(1,9);
-            if (computerNumberList.contains(randomIntegerNumber)) {
-                continue;
-            }
-            computerNumberList.add(randomIntegerNumber);
-            if (computerNumberList.size() == 3) {
-                break;
-            }
-        }
-        return computerNumberList;
-    }
-
     public static ArrayList<Integer> countBallAndStrike(ArrayList<Integer> userNumberList, ArrayList<Integer> computerNumberList) {
         ArrayList<Integer> comparisonResult = new ArrayList<>();
         int ballNumber = 0, strikeNumber = 0;
@@ -109,4 +109,5 @@ public class Application {
             System.exit(0);
         }
     }
+
 }
