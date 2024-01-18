@@ -11,7 +11,7 @@ public class RandomNumberGenerator {
     public RandomNumberGenerator() {
     }
 
-    public static List<Integer> makeRandomNumbers() {
+    public List<Integer> makeRandomNumbers() {
         List<Integer> randNumbers = new ArrayList<>();
         do {
             int randNum = makeRandomNumberInRange();
@@ -22,7 +22,7 @@ public class RandomNumberGenerator {
         return randNumbers;
     }
 
-    public static int makeRandomNumberInRange() {
+    public int makeRandomNumberInRange() {
         return Randoms.pickNumberInRange(START_INCLUSIVE, END_INCLUSIVE);
     }
 }
