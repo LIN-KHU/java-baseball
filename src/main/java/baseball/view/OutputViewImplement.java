@@ -2,14 +2,14 @@ package baseball.view;
 
 import baseball.domain.Score;
 
-public class OutputViewImplement implements OutputView{
+public class OutputViewImplement implements OutputView {
     @Override
     public void printInputNumber() {
         System.out.println("숫자를 입력해주세요 : ");
     }
 
     @Override
-    public void printJudgeResult(Score score) {
+    public void printScore(Score score) {
         System.out.println(score);
     }
 

@@ -38,7 +38,7 @@ public class GameClient {
             checkIncludeZero(number);
             BallNumber ballNumber = new BallNumber(number);
             score = scoreCalculator.createScore(ballNumber, randomCreatedNumber);
-            outputView.printJudgeResult(score);
+            outputView.printScore(score);
         } while (!score.isThreeStrike());
         outputView.printEndMessage();
     }
