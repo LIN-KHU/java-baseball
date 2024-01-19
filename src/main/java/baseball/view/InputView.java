@@ -1,6 +1,8 @@
 package baseball.view;
 import camp.nextstep.edu.missionutils.Console;
 public class InputView {
+    private static final int userMinNumber = 100;
+    private static final int userMaxNumber = 999;
     public int readUserNumber() {
         String str =  Console.readLine();
         int number = 0;
@@ -26,7 +28,7 @@ public class InputView {
     private int checkUserNumberError(String str) {
         try{
             int number = Integer.parseInt(str);
-            if (number < 111 || number > 999) {
+            if (number < userMinNumber || number > userMaxNumber) {
                 throw new IllegalArgumentException();
             }
             return number;
