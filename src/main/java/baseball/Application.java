@@ -9,7 +9,7 @@ public class Application {
         OutputView output = new OutputView();
         while (true) {
             RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
-            int answerNumber = randomNumberGenerator.makeThreeDigitNumberMadeOfDifferentNumbers();
+            Number answerNumber = new Number(randomNumberGenerator.makeThreeDigitNumberMadeOfDifferentNumbers());
             Game game = new Game(answerNumber, input, output);
             game.doGame();
             if (!game.askIfRetry()) {

@@ -6,9 +6,9 @@ import baseball.view.OutputView;
 public class Game {
     private final InputView input;
     private final OutputView output;
-    private final int answer;
+    private final Number answer;
 
-    public Game(int answer, InputView input, OutputView output) {
+    public Game(Number answer, InputView input, OutputView output) {
         this.answer = answer;
         this.input = input;
         this.output = output;
@@ -17,37 +17,37 @@ public class Game {
         int ball, strike = 0;
         while (strike != 3) {
             output.printGuessNumberInstruction();
-            int userNumber = input.readUserNumber();
+            Number userNumber = new Number(input.readUserNumber());
             strike = calStrike(userNumber);
-            ball = calBall(userNumber,strike);
+            ball = calBall(userNumber);
             output.gameResult(ball, strike);
         }
     }
 
-    private int calBall(int number, int strike) {
+    private int calBall(Number userNumber) {
         int result = 0;
-        char[] answerArray = String.valueOf(answer).toCharArray();
-        char[] userArray = String.valueOf(number).toCharArray();
-        if ((answerArray[0] == userArray[1]) || (answerArray[0] == userArray[2])) {
+        if (( answer.getFirstDigit() == userNumber.getSecondDigit() ) || ( answer.getFirstDigit() == userNumber.getThirdDigit() )) {
             result++;
         }
-        if ((answerArray[1] == userArray[0]) || (answerArray[1] == userArray[2])) {
+        if (( answer.getSecondDigit() == userNumber.getFirstDigit() ) || ( answer.getSecondDigit() == userNumber.getThirdDigit() )) {
             result++;
         }
-        if ((answerArray[2] == userArray[0]) || (answerArray[2] == userArray[1])) {
+        if (( answer.getThirdDigit() == userNumber.getFirstDigit() ) || ( answer.getThirdDigit() == userNumber.getSecondDigit() )) {
             result++;
         }
         return result;
     }
 
-    private int calStrike(int userNumber) {
+    private int calStrike(Number userNumber) {
         int result = 0;
-        String answerNumberString = String.valueOf(answer);
-        String userNumberString = String.valueOf(userNumber);
-        for (int i = 0; i < 3; i++) {
-            if (answerNumberString.charAt(i) == userNumberString.charAt(i)) {
-                result++;
-            }
+        if (answer.getFirstDigit() == userNumber.getFirstDigit()) {
+            result++;
+        }
+        if (answer.getSecondDigit() == userNumber.getSecondDigit()) {
+            result++;
+        }
+        if (answer.getThirdDigit() == userNumber.getThirdDigit()) {
+            result++;
         }
         return result;
     }
