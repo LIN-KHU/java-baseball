@@ -1,7 +1,7 @@
 package baseball.view;
 import camp.nextstep.edu.missionutils.Console;
 public class InputView {
-    public int userNumber() {
+    public int readUserNumber() {
         String str =  Console.readLine();
         int number = 0;
         try {
@@ -12,7 +12,7 @@ public class InputView {
         return number;
     }
 
-    public int exitNumber() {
+    public int readExitNumber() {
         String str = Console.readLine();
         int number = 0;
         try {
