@@ -40,12 +40,12 @@ public class Game {
         return result;
     }
 
-    private int calStrike(int number) {
+    private int calStrike(int userNumber) {
         int result = 0;
-        char[] answerArray = String.valueOf(answer).toCharArray();
-        char[] userArray = String.valueOf(number).toCharArray();
+        String answerNumberString = String.valueOf(answer);
+        String userNumberString = String.valueOf(userNumber);
         for (int i = 0; i < 3; i++) {
-            if (answerArray[i] == userArray[i]) {
+            if (answerNumberString.charAt(i) == userNumberString.charAt(i)) {
                 result++;
             }
         }
