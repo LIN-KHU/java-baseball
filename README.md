@@ -130,7 +130,19 @@
 <br>
 
 ---
+## 구현할 기능 목록
+- 컴퓨터가 임의의 수 3개 선택하도록 구현
+- 게임 진행
+  - 스트라이크일 경우
+  - 볼일 경우
+  - 낫싱일 경우
+- 3개의 숫자를 모두 맞힐시에 대한 결과 출력
+- 게임이 끝났을 경우에 대한 처리
+- 입력에 대한 에러처리
 
+<br>
+ 
+---
 ## 📝 License
 
 This project is [MIT](https://github.com/woowacourse/java-baseball-precourse/blob/master/LICENSE) licensed.
