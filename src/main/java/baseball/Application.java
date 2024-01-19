@@ -5,10 +5,12 @@ import baseball.view.OutputView;
 
 public class Application {
     public static void main(String[] args) {
+        InputView input = new InputView();
+        OutputView output = new OutputView();
         while (true) {
             RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
             int answerNumber = randomNumberGenerator.makeThreeDigitNumberMadeOfDifferentNumbers();
-            Game game = new Game(answerNumber);
+            Game game = new Game(answerNumber, input, output);
             game.doGame();
             if (!game.askIfRetry()) {
                 break;

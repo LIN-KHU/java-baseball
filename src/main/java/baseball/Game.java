@@ -4,12 +4,14 @@ import baseball.view.InputView;
 import baseball.view.OutputView;
 
 public class Game {
-    InputView input = new InputView();
-    OutputView output = new OutputView();
+    private final InputView input;
+    private final OutputView output;
     private final int answer;
 
-    public Game(int answer) {
+    public Game(int answer, InputView input, OutputView output) {
         this.answer = answer;
+        this.input = input;
+        this.output = output;
     }
     public void doGame() {
         int ball, strike = 0;
