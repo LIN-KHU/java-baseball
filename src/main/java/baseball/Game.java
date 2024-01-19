@@ -20,7 +20,7 @@ public class Game {
             Number userNumber = new Number(input.readUserNumber());
             strike = calStrike(userNumber);
             ball = calBall(userNumber);
-            output.gameResult(ball, strike);
+            output.printGameResult(ball, strike);
         }
     }
 
