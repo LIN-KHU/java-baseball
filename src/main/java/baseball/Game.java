@@ -17,7 +17,7 @@ public class Game {
         int ball, strike = 0;
         while (strike != 3) {
             output.printGuessNumberInstruction();
-            int userNumber = input.userNumber();
+            int userNumber = input.readUserNumber();
             strike = calStrike(userNumber);
             ball = calBall(userNumber,strike);
             output.gameResult(ball, strike);
@@ -53,6 +53,6 @@ public class Game {
     }
 
     public boolean askIfRetry() {
-        return (input.exitNumber() == 1);
+        return (input.readExitNumber() == 1);
     }
 }
