@@ -17,15 +17,15 @@ public class Application {
     // 3. 각 자리의 숫자가 0이 아니고, 서로 같지 않아야 함
     public static List<Integer> getNumbers() {
 
-        List<Integer> Numbers = new ArrayList<>();
+        List<Integer> numbers = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
         System.out.print("숫자를 입력해주세요 : ");
         int num = scanner.nextInt();
         while (num > 0) {
-            Numbers.add(num % 10);
+            numbers.add(num % 10);
             num /= 10;
         }
-        return Numbers;
+        return numbers;
     }
 
     public static List<Integer> makeAnswer() {
