@@ -1,4 +1,4 @@
-package baseball.util;
+package baseball.controller;
 
 import org.mockito.internal.matchers.Null;
 

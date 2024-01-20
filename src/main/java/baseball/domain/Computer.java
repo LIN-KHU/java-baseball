@@ -6,8 +6,8 @@ import java.util.*;
 
 public class Computer {
     private final int computerNumber;
-    public Computer() {
-        this.computerNumber = createThreeDigitNumberFromRandomNumbers();
+    public Computer(ThreeBall balls) {
+        this.computerNumber = balls.threeBalls;
     }
 
     private int createThreeDigitNumberFromRandomNumbers() {

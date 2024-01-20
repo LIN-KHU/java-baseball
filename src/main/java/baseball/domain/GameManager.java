@@ -1,4 +1,4 @@
-package baseball.controller;
+package baseball.domain;
 
 import baseball.domain.CompareNumbers;
 import baseball.domain.Computer;
