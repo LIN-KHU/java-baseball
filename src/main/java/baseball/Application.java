@@ -24,13 +24,9 @@ public class Application {
                 if (strike == 3) {
                     printResultIfGameFinish();
                     break;
-                } else {
-                    printResultIfGameNotFinish(strike, ball);
                 }
-
-
+                printResultIfGameNotFinish(strike, ball);
             }
-            // 예외처리 하기
             restart();
         }
     }
