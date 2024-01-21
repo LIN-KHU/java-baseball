@@ -1,4 +1,4 @@
-package baseball.domain;
+package baseball.controller;
 
 public enum PlayCommand {
     RESTART(1),

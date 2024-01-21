@@ -1,4 +1,4 @@
-package baseball.domain;
+package baseball.controller;
 
 import baseball.domain.CompareNumbers;
 import baseball.domain.Computer;
@@ -12,6 +12,9 @@ import java.util.List;
 public class GameManager {
 
     public GameManager() {
+        ////
+
+        game(restart)
 
     }
 
@@ -39,6 +42,16 @@ public class GameManager {
             return list;
         }
         return userNumberInputAndCompareNumbersProcessingLogic(user, computerNumber);
+    }
+
+    private void restart() {
+        int value = Integer.parseInt(InputView.inputConsole());
+        if (value == PlayCommand.RESTART) {
+
+        }
+        if (value == PlayCommand.END) {
+
+        }
     }
 
 }
