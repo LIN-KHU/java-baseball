@@ -1,31 +1,36 @@
 package baseball;
+import java.util.ArrayList;
 
 public class Number {
-    private final int number;
-    private final int firstDigit;
-    private final int secondDigit;
-    private final int thirdDigit;
+    private final String numberString;
+    private final ArrayList<Character> digitList;
 
     public Number(int number) {
-        this.number = number;
-        this.firstDigit = String.valueOf(number).charAt(0);
-        this.secondDigit = String.valueOf(number).charAt(1);
-        this.thirdDigit = String.valueOf(number).charAt(2);
+        this.numberString = String.valueOf(number);
+        this.digitList = new ArrayList<Character>();
+        for (int i = 0; i < numberString.length(); i++) {
+            digitList.add(numberString.charAt(i));
+        }
     }
 
-    public int getNumber() {
-        return number;
+    public int countStrike(Number other) {
+        int strike = 0;
+        for (int i = 0; i < numberString.length(); i++) {
+            if (digitList.get(i) == other.digitList.get(i)) {
+                strike++;
+            }
+        }
+        return strike;
     }
 
-    public int getFirstDigit() {
-        return firstDigit;
-    }
-
-    public int getSecondDigit() {
-        return secondDigit;
-    }
-
-    public int getThirdDigit() {
-        return thirdDigit;
+    public int countBall(Number other) {
+        int ball = 0;
+        for (int i = 0; i < numberString.length(); i++) {
+            if ((digitList.get(i) != other.digitList.get(i)) &&
+                    digitList.contains(other.digitList.get(i))){
+                ball++;
+            }
+        }
+        return ball;
     }
 }

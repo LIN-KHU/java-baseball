@@ -14,42 +14,15 @@ public class Game {
         this.output = output;
     }
     public void doGame() {
-        int ball, strike = 0;
+        int ball = 0;
+        int strike = 0;
         while (strike != 3) {
             output.printGuessNumberInstruction();
             Number userNumber = new Number(input.readUserNumber());
-            strike = calStrike(userNumber);
-            ball = calBall(userNumber);
+            strike = userNumber.countStrike(answer);
+            ball = userNumber.countBall(answer);
             output.printGameResult(ball, strike);
         }
-    }
-
-    private int calBall(Number userNumber) {
-        int result = 0;
-        if (( answer.getFirstDigit() == userNumber.getSecondDigit() ) || ( answer.getFirstDigit() == userNumber.getThirdDigit() )) {
-            result++;
-        }
-        if (( answer.getSecondDigit() == userNumber.getFirstDigit() ) || ( answer.getSecondDigit() == userNumber.getThirdDigit() )) {
-            result++;
-        }
-        if (( answer.getThirdDigit() == userNumber.getFirstDigit() ) || ( answer.getThirdDigit() == userNumber.getSecondDigit() )) {
-            result++;
-        }
-        return result;
-    }
-
-    private int calStrike(Number userNumber) {
-        int result = 0;
-        if (answer.getFirstDigit() == userNumber.getFirstDigit()) {
-            result++;
-        }
-        if (answer.getSecondDigit() == userNumber.getSecondDigit()) {
-            result++;
-        }
-        if (answer.getThirdDigit() == userNumber.getThirdDigit()) {
-            result++;
-        }
-        return result;
     }
 
     public boolean askIfRetry() {
