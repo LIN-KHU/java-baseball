@@ -1,30 +1,43 @@
 package baseball.domain;
 
-import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
-public class ThreeBall {
+public class ThreeBalls {
 
-    int balls;
+    public static final int NUMBER_MAX_LENGTH = 3;
+    private List<Integer> numberList;
 
-    private int createThreeDigitNumberFromRandomNumbers() {
-        Set<Integer> numSet = new HashSet<Integer>();
-        while (true) {
-            int num = generateRandomNumber();
-            numSet.add(num);
-            if (numSet.size() >= 3) {
-                break;
-            }
+    public ThreeBalls(List<Integer> numberList) {
+        validateContainsZeroOrNot(numberList);
+        validateThreeDigitOrNot(numberList);
+        validateUniqueOrNot(numberList);
+        this.numberList = numberList;
+    }
+
+    private void validateContainsZeroOrNot(List<Integer> numberList) {
+        if (numberList.contains(0)) {
+            throw new IllegalArgumentException("0은 입력하지 마세요.");
         }
-        Integer[] numArray = numSet.toArray(new Integer[0]);
-        return numArray[0] * 100 + numArray[1] * 10 + numArray[2];
+    }
+
+    private void validateThreeDigitOrNot(List<Integer> numberList) {
+        if (!(numberList.size() == NUMBER_MAX_LENGTH)) {
+            throw new IllegalArgumentException("3자리 수를 입력하세요.");
+        }
+    }
+
+    private void validateUniqueOrNot(List<Integer> numberList) {
+        Set<Integer> numberSet = new HashSet<Integer>(numberList);
+        if (!(numberSet.size() == numberList.size())) {
+            throw new IllegalArgumentException("각 자리수가 서로 다른 수로 이루어진 수를 입력하세요.");
+        }
     }
 
 
-    private int generateRandomNumber() {
-        return Randoms.pickNumberInRange(1, 9);
+    public List<Integer> getNumberList() {
+        return numberList;
     }
 
 }

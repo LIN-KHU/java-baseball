@@ -1,20 +1,16 @@
 package baseball.domain;
 
-import baseball.view.InputView;
+import java.util.List;
 
 public class User {
 
-    private String userNumber;
+    private List<Integer> userNumber;
 
-    public User() {
-
+    public User(ThreeBalls balls) {
+        this.userNumber = balls.getNumberList();
     }
 
-    public void setUserNumber() {
-        this.userNumber = InputView.inputConsole();
-    }
-
-    public int getUserNumber() { 
+    public List<Integer> getUserNumber() {
         return this.userNumber;
     }
 }

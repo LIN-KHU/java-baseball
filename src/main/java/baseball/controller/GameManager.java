@@ -1,57 +1,90 @@
 package baseball.controller;
 
-import baseball.domain.CompareNumbers;
-import baseball.domain.Computer;
-import baseball.domain.User;
+import baseball.domain.*;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
 import java.util.List;
 
-
 public class GameManager {
 
-    public GameManager() {
-        ////
+    private PlayCommand command;
 
-        game(restart)
+    private final InputView inputView;
+    private final OutputView outputView;
 
+    public GameManager(InputView inputView, OutputView outputView) {
+        this.inputView = inputView;
+        this.outputView = outputView;
     }
 
-    public void gameStart() {
-        Computer computer = new Computer();
-        int computerNumber = computer.getComputerNumber();
+    public void run() {
+        Result result;
+        ThreeBalls computerNumber = new ThreeBalls(RandomNumberGenerator.generateUniqueDigitRandomNumberList());
+        Computer computer = new Computer(computerNumber);
 
-        User user1 = new User();
+        do {
+            User user = getUser();
 
-        List<Integer> list = userNumberInputAndCompareNumbersProcessingLogic(user1, computerNumber);
+            CompareNumbers compareNumbers = new CompareNumbers(computer, user);
 
-        OutputView.printThreeStrikeAndGameEnd(list);
-        int restartNum = InputView.inputRestartOrNotNumber();
-        if (restartNum == 1) {
-            gameStart();
+            result = new Result(compareNumbers);
+            outputView.printResult(result);
+        } while (!result.isThreeStrike());
+        outputView.printEndMessage();
+        restartOrNot();
+        if (command == PlayCommand.RESTART) {
+            run();
         }
     }
 
-    private List<Integer> userNumberInputAndCompareNumbersProcessingLogic(User user, int computerNumber) {
-        user.setUserNumber();
-        int userNumber = user.getUserNumber();
-        List<Integer> list = CompareNumbers.compareNumbers(computerNumber, userNumber);
-        OutputView.printBallAndStrikeMessage(list);
-        if (list.get(1) == 3) {
-            return list;
+    private User getUser() {
+        try {
+            outputView.printInputUserNumberMessage();
+            List<Integer> inputValue = inputView.inputNumber();
+            ThreeBalls userNumber = new ThreeBalls(inputValue);
+            User user = new User(userNumber);
+            return user;
+        } catch (IllegalArgumentException e) {
+            System.out.println("[ERROR] " + e.getMessage());
+            return getUser();
         }
-        return userNumberInputAndCompareNumbersProcessingLogic(user, computerNumber);
     }
+
+    public void restartOrNot() {
+        try {
+            outputView.printRestartMessage();
+            PlayCommand userCommand = getUserCommand(inputView.inputRestartOption());
+            if (userCommand == PlayCommand.RESTART) {
+                restart();
+            }
+            if (userCommand == PlayCommand.END) {
+                gameEnd();
+            }
+        } catch (IllegalArgumentException e) {
+            System.out.println("[ERROR] " + e.getMessage());
+            restartOrNot();
+        }
+    }
+
+    private PlayCommand getUserCommand(int userInput) {
+        switch (userInput) {
+            case 1:
+                return PlayCommand.RESTART;
+            case 2:
+                return PlayCommand.END;
+            default:
+                throw new IllegalArgumentException("1 또는 2를 입력하세요.");
+        }
+    }
+
 
     private void restart() {
-        int value = Integer.parseInt(InputView.inputConsole());
-        if (value == PlayCommand.RESTART) {
+        command = PlayCommand.RESTART;
+    }
 
-        }
-        if (value == PlayCommand.END) {
-
-        }
+    private void gameEnd() {
+        command = PlayCommand.END;
     }
 
 }

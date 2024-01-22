@@ -5,35 +5,29 @@ import java.util.List;
 
 public class CompareNumbers {
 
-    public static List<Integer> compareNumbers(int computerNumber, int userNumber) {
-        String computerNumberStr = convertIntegerToString(computerNumber);
-        String userNumberStr = convertIntegerToString(userNumber);
-        List<Integer> list = new ArrayList<Integer>();
-        list.add(countBall(computerNumberStr, userNumberStr));
-        list.add(countStrike(computerNumberStr, userNumberStr));
-        return list;
+    private List<Integer> computerNumber;
+    private List<Integer> userNumber;
+
+    public CompareNumbers(Computer computer, User user) {
+        this.computerNumber = computer.getComputerNumber();
+        this.userNumber = user.getUserNumber();
     }
 
-    private static String convertIntegerToString(int number) {
-        return Integer.toString(number);
-    }
-
-    private static int countBall(String computerNumberStr, String userNumberStr) {
+    public int countBall() {
         int ball = 0;
-        for (int i = 0; i < userNumberStr.length(); i++) {
-            int indexNum = computerNumberStr.indexOf(userNumberStr.charAt(i));
-            if ((indexNum >= 0) && (userNumberStr.charAt(i) != computerNumberStr.charAt(i))) {
-                ball += 1;
+        for (int i = 0; i < this.userNumber.size(); i++) {
+            if ((computerNumber.contains(userNumber.get(i))) && (computerNumber.get(i) != userNumber.get(i))) {
+                ball++;
             }
         }
         return ball;
     }
 
-    private static int countStrike(String computerNumberStr, String userNumberStr) {
+    public int countStrike() {
         int strike = 0;
-        for (int i = 0; i < userNumberStr.length(); i++) {
-            if (userNumberStr.charAt(i) == computerNumberStr.charAt(i)) {
-                strike += 1;
+        for (int i = 0; i < this.userNumber.size(); i++) {
+            if (computerNumber.get(i) == userNumber.get(i)) {
+                strike++;
             }
         }
         return strike;

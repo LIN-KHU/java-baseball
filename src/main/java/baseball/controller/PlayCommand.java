@@ -10,4 +10,10 @@ public enum PlayCommand {
     PlayCommand(Integer value) {
         this.value = value;
     }
+
+    public int getValue() {
+        return value;
+    }
+
+
 }

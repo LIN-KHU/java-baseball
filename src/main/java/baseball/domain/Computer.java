@@ -1,21 +1,16 @@
 package baseball.domain;
 
-import camp.nextstep.edu.missionutils.Randoms;
-
-import java.util.*;
+import java.util.List;
 
 public class Computer {
-    private final int computerNumber;
-    public Computer(ThreeBall balls) {
-        this.computerNumber = balls.balls;
+
+    private final List<Integer> computerNumber;
+
+    public Computer(ThreeBalls balls) {
+        this.computerNumber = balls.getNumberList();
     }
 
-
-    private void validate() {
-
-    }
-
-    public int getComputerNumber() {
+    public List<Integer> getComputerNumber() {
         return this.computerNumber;
     }
 }
