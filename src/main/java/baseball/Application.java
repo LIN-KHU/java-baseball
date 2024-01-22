@@ -1,15 +1,16 @@
 package baseball;
 
-
+import baseball.view.InputInterface;
+import baseball.view.OutputInterface;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
     public static void main(String[] args) {
-        int[] generateAnswer = generateAnswer();
 
-        playGames(generateAnswer, 0); 
+        int[] generateAnswer = generateAnswer();
+        playGames(generateAnswer, 0);
     }
 
     public static int[] generateAnswer() {
@@ -23,36 +24,49 @@ public class Application {
     }
 
     public static void playGames(int[] generateAnswer, int attempts) {
-        if (attempts > 0) {
-            System.out.println("숫자를 입력해주세요: ");
-        }
 
-        String userinput = InputView.getUserInput();
-        char[] userInputArray = userinput.toCharArray();
+        InputInterface Input = createInput();
+        OutputInterface Output = createOutput();
+
+        char[] userInputArray = GetUserInputArray(Input);
 
         int strikes = 0;
         int balls = 0;
 
         for(int i =0; i< generateAnswer.length; i++) {
-            int userDigit = Character.getNumericValue(userInputArray[i]); //
+            int userDigit = Character.getNumericValue(userInputArray[i]);
 
             if(userDigit == generateAnswer[i]) {
                 strikes++;
-            } else if (containsDigit(generateAnswer, userDigit)) {
+            }
+            if (containsDigit(generateAnswer, userDigit)) {
                 balls++;
             }
         }
 
-        OutputView.printResult(strikes, balls, generateAnswer, attempts);
+        Output.printResult(strikes, balls, generateAnswer, attempts);
     }
 
     private static boolean containsDigit(int[] generateAnswer, int userDigit) {
-        for (int i =0; i< generateAnswer.length; i++) {
-            if (generateAnswer[i] == userDigit) {
+        for (int number : generateAnswer) {
+            if (number == userDigit) {
                 return true;
             }
         }
         return false;
+    }
+
+    private static InputInterface createInput() {
+        return new InputView();
+    }
+
+    private static OutputInterface createOutput() {
+        return new OutputView();
+    }
+
+    private static char[] GetUserInputArray(InputInterface Input) {
+        String userInput = Input.getUserInput();
+        return userInput.toCharArray();
     }
 
 }
