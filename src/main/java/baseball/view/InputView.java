@@ -4,50 +4,48 @@ public class InputView {
     private static final int userMinNumber = 100;
     private static final int userMaxNumber = 999;
     public int readUserNumber() {
-        String str =  Console.readLine();
-        int number = 0;
-        try {
-            number = checkUserNumberError(str);
-        } catch (IllegalArgumentException e) {
-            System.exit(1);
-        }
-        return number;
+        String userNumber = Console.readLine();
+        checkNumeric(userNumber);
+        checkUserNumberError(userNumber);
+        return Integer.parseInt(userNumber);
     }
 
     public int readExitNumber() {
-        String str = Console.readLine();
-        int number = 0;
-        try {
-            number = checkExitNumberError(str);
-        } catch (IllegalArgumentException e) {
-            System.exit(1);
-        }
-        return number;
+        String exitNumber = Console.readLine();
+        checkNumeric(exitNumber);
+        checkExitNumberError(exitNumber);
+        return Integer.parseInt(exitNumber);
     }
 
-    private int checkUserNumberError(String str) {
+    private void checkNumeric(String str) {
+        try{
+            Integer.parseInt(str);
+        }
+        catch (IllegalArgumentException ex){
+            System.exit(1);
+        }
+    }
+    private void checkUserNumberError(String str) {
         try{
             int number = Integer.parseInt(str);
             if (number < userMinNumber || number > userMaxNumber) {
                 throw new IllegalArgumentException();
             }
-            return number;
         }
-        catch (NumberFormatException ex){
-            throw new IllegalArgumentException();
+        catch (IllegalArgumentException ex){
+            System.exit(1);
         }
     }
 
-    private int checkExitNumberError(String str) {
+    private void checkExitNumberError(String str) {
         try{
             int number = Integer.parseInt(str);
             if (number != 1 && number != 2) {
                 throw new IllegalArgumentException();
             }
-            return number;
         }
-        catch (NumberFormatException ex){
-            throw new IllegalArgumentException();
+        catch (IllegalArgumentException ex){
+            System.exit(1);
         }
     }
 }
