@@ -27,14 +27,18 @@ public class Game {
         int result = 0;
 
         while (result == 0) {
-            outputView.printGetNumMessage();
-            String playerNumber = inputView.readPlayerNumber();
+            String playerNumber = getPlayerNumber();
             if (validateInputNumber(playerNumber)) {
                 playerNumberList = savePlayerNumber(playerNumber);
                 result = compareNumber(computerNumberList, playerNumberList);
             }
         }
         checkRestart();
+    }
+
+    private String getPlayerNumber() {
+        outputView.printGetNumMessage();
+        return inputView.readPlayerNumber();
     }
 
     private Boolean validateInputNumber(String playerNumber) { //예외 사항 -> 요란하게 실패하는게 좋음
@@ -102,20 +106,28 @@ public class Game {
         if (nothing == 3) {
             outputView.printNothingMessage();
         } else if (ball > 0) {
-            if (strike > 0) {
-                outputView.printBallAndStrikeMessage(ball, strike);
-            } else {
-                outputView.printBallMessage(ball);
-            }
+            countBallAndStrike(ball, strike);
         } else if (strike > 0) {
-            outputView.printStrikeMessage(strike);
-            if (strike == 3) {
-                outputView.printGameSuccessMessage();
-                state = 1;
-            }
+            state = countStrike(strike);
         }
 
         return state;
+    }
+
+    private void countBallAndStrike(int ball, int strike) {
+        if(strike > 0) {
+            outputView.printBallAndStrikeMessage(ball, strike);
+        }
+        else outputView.printBallMessage(ball);
+    }
+
+    private Integer countStrike(int strike) {
+        outputView.printStrikeMessage(strike);
+        if (strike == 3) {
+            outputView.printGameSuccessMessage();
+            return 1;
+        }
+        return 0;
     }
 
     private void checkRestart() {
@@ -126,7 +138,6 @@ public class Game {
             restartNumber = inputView.readRestartNumber();
         } catch (NumberFormatException e) {
             System.out.println(ERROR_RESTART_INPUT_MSG);
-            System.out.println(restartNumber);
             checkRestart();
         }
 
@@ -134,7 +145,6 @@ public class Game {
             startGame();
         } else if (restartNumber != 2) {
             System.out.println(ERROR_RESTART_INPUT_MSG);
-            System.out.println(restartNumber);
             checkRestart();
         }
     }
