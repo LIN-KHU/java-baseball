@@ -1,39 +1,81 @@
 package baseball;
 
-import baseball.message.MessageConst;
-
 import java.util.ArrayList;
 import java.util.List;
 
+import static baseball.message.MessageConst.*;
+
 public class Game {
 
-    ComputerUtil computer = new ComputerUtil();
+    //기능 목록 짜기
+
+    Computer computer = new Computer();
     PlayerUtil player = new PlayerUtil();
 
-    List<Integer> computerNumber = new ArrayList<>();
-    List<Integer> playerNumber = new ArrayList<>();
+    List<Integer> computerNumberList = new ArrayList<>(); //3개의 숫자를 저장하고 있는 객체.
+    List<Integer> playerNumberList = new ArrayList<>();
 
     public void startGame() {
-        computerNumber = computer.generateNumber();
+        computerNumberList = computer.generateNumber();
 
         int result = 0;
 
         while (result == 0) {
-            playerNumber = player.generateNumber();
-            result = compareNumber(computerNumber, playerNumber);
+            String playerNumber = player.generateNumber();
+            if (validateInputNumber(playerNumber)) {
+                playerNumberList = savePlayerNumber(playerNumber);
+                result = compareNumber(computerNumberList, playerNumberList);
+            }
         }
-
         checkRestart();
     }
 
-    private int compareNumber(List<Integer> computerNumber, List<Integer> playerNumber) {
+    private Boolean validateInputNumber(String playerNumber) { //예외 사항 -> 요란하게 실패하는게 좋음
+
+        if (validateInputNumberType(playerNumber)) {
+            return validateInputNumberSize(playerNumber);
+        }
+        return false;
+    }
+
+    private List<Integer> savePlayerNumber(String playerNumber) {
+        List<Integer> getPlayerNumberList = new ArrayList<>();
+        String[] splitInputNumber = playerNumber.split("");
+        for (String s : splitInputNumber) {
+            getPlayerNumberList.add(Integer.parseInt(s));
+        }
+        return getPlayerNumberList;
+    }
+
+    private boolean validateInputNumberSize(String playerNumber) {
+        if (playerNumber.length() != 3) { //매직 넘버 , 상수화
+            System.out.println(ERROR_INPUT_SIZE_MSG);
+            return false;
+        }
+        return true;
+    }
+
+    private boolean validateInputNumberType(String playerNumber) {
+        String[] splitNumber = playerNumber.split("");
+        for (String s : splitNumber) {
+            try {
+                Integer.parseInt(s);
+            } catch (NumberFormatException e) {
+                System.out.println(ERROR_INPUT_TYPE_MSG);
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private int compareNumber(List<Integer> computerNumberList, List<Integer> playerNumberList) {
 
         int strike = 0;
         int ball = 0;
         int nothing = 0;
 
-        for (int i = 0; i < playerNumber.size(); i++) {
-            int index = computerNumber.indexOf(playerNumber.get(i));
+        for (int i = 0; i < playerNumberList.size(); i++) {
+            int index = computerNumberList.indexOf(playerNumberList.get(i));
             if (index == i) {
                 strike++;
             } else if (index == -1) {
@@ -42,27 +84,27 @@ public class Game {
                 ball++;
             }
         }
-
+        playerNumberList.clear();
         return checkResultState(strike, ball, nothing);
     }
 
-    private int checkResultState(int strike, int ball, int nothing) {
+    private int checkResultState(int strike, int ball, int nothing) { // else if 메소드 분리
 
         int state = 0;
 
         if (nothing == 3) {
-            System.out.println(MessageConst.NOTHING);
+            System.out.println(NOTHING);
         } else if (ball > 0) {
             if (strike > 0) {
-                System.out.println(ball + MessageConst.BALL + " " + strike +  MessageConst.STRIKE);
+                System.out.println(ball + BALL + " " + strike + STRIKE);
             } else {
-                System.out.println(ball + MessageConst.BALL);
+                System.out.println(ball + BALL);
             }
         } else if (strike > 0) {
-            System.out.println(strike + MessageConst.STRIKE);
+            System.out.println(strike + STRIKE);
             if (strike == 3) {
-                System.out.println(MessageConst.SUCCESS_MSG);
-               state = 1;
+                System.out.println(SUCCESS_MSG);
+                state = 1;
             }
         }
 
@@ -71,13 +113,22 @@ public class Game {
 
     private void checkRestart() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        int restartNumber = player.getRestartNumber();
-        if(restartNumber == 1){
+        int restartNumber = 0;
+
+        try {
+            restartNumber = player.getRestartNumber();
+        } catch (NumberFormatException e) {
+            System.out.println(ERROR_RESTART_INPUT_MSG);
+            System.out.println(restartNumber);
+            checkRestart();
+        }
+
+        if (restartNumber == 1) {
             startGame();
-        } else if (restartNumber == 2) {
-
-        } else {
-
+        } else if (restartNumber != 2) {
+            System.out.println(ERROR_RESTART_INPUT_MSG);
+            System.out.println(restartNumber);
+            checkRestart();
         }
     }
 }
