@@ -99,17 +99,17 @@ public class Game {
         int state = 0;
 
         if (nothing == 3) {
-            System.out.println(NOTHING);
+            outputView.printNothingMessage();
         } else if (ball > 0) {
             if (strike > 0) {
-                System.out.println(ball + BALL + " " + strike + STRIKE);
+                outputView.printBallAndStrikeMessage(ball, strike);
             } else {
-                System.out.println(ball + BALL);
+                outputView.printBallMessage(ball);
             }
         } else if (strike > 0) {
-            System.out.println(strike + STRIKE);
+            outputView.printStrikeMessage(strike);
             if (strike == 3) {
-                System.out.println(SUCCESS_MSG);
+                outputView.printGameSuccessMessage();
                 state = 1;
             }
         }
