@@ -2,6 +2,7 @@ package baseball;
 
 import baseball.view.InputView;
 import baseball.view.OutputView;
+import com.sun.org.apache.bcel.internal.Const;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +11,7 @@ import static baseball.message.MessageConst.*;
 
 public class Game {
 
-    //기능 목록 짜기
+    public static final Integer COUNT_NUMBER = 3;
 
     Computer computer = new Computer();
 
@@ -54,7 +55,7 @@ public class Game {
     }
 
     private boolean validateInputNumberSize(String playerNumber) {
-        if (playerNumber.length() != 3) { //매직 넘버 , 상수화
+        if (playerNumber.length() != COUNT_NUMBER) { //매직 넘버 , 상수화
             System.out.println(ERROR_INPUT_SIZE_MSG);
             return false;
         }
