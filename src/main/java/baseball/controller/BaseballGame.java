@@ -1,11 +1,12 @@
 package baseball.controller;
 
-import baseball.model.RandomNum;
+import baseball.model.ComputerNumber;
+import baseball.view.InputView;
 
 public class BaseballGame {
 
     public void start(){
-        RandomNum randomNum = new RandomNum();
-        System.out.println(randomNum.getRandomNum());
+        InputView.inputUserNumber();
+        ComputerNumber computerNumber = new ComputerNumber();
     }
 }
