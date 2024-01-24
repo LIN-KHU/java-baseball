@@ -12,7 +12,7 @@ public class PlayerUtil {
     InputView inputView = new InputView();
     OutputView outputView = new OutputView();
 
-    public List<Integer> generateNumber() {
+    public String generateNumber() {
         outputView.printGetNumMessage();
         return inputView.readPlayerNumber();
     }
