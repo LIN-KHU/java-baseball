@@ -7,7 +7,7 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PlayerUtil {
+ public class PlayerUtil { //Player
 
     InputView inputView = new InputView();
     OutputView outputView = new OutputView();
