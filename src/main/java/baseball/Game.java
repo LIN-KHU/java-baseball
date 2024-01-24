@@ -1,5 +1,8 @@
 package baseball;
 
+import baseball.view.InputView;
+import baseball.view.OutputView;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +13,9 @@ public class Game {
     //기능 목록 짜기
 
     Computer computer = new Computer();
-    PlayerUtil player = new PlayerUtil();
+
+    InputView inputView = new InputView();
+    OutputView outputView = new OutputView();
 
     List<Integer> computerNumberList = new ArrayList<>(); //3개의 숫자를 저장하고 있는 객체.
     List<Integer> playerNumberList = new ArrayList<>();
@@ -21,7 +26,8 @@ public class Game {
         int result = 0;
 
         while (result == 0) {
-            String playerNumber = player.generateNumber();
+            outputView.printGetNumMessage();
+            String playerNumber = inputView.readPlayerNumber();
             if (validateInputNumber(playerNumber)) {
                 playerNumberList = savePlayerNumber(playerNumber);
                 result = compareNumber(computerNumberList, playerNumberList);
@@ -116,7 +122,7 @@ public class Game {
         int restartNumber = 0;
 
         try {
-            restartNumber = player.getRestartNumber();
+            restartNumber = inputView.readRestartNumber();
         } catch (NumberFormatException e) {
             System.out.println(ERROR_RESTART_INPUT_MSG);
             System.out.println(restartNumber);
