@@ -35,7 +35,6 @@ public class Application {
 
     public static Boolean playGame(ArrayList<Integer> computerNumberList) {
         while (true) {
-            printIntroMessage();
             String stringUserInput = getUserInput();
             validateUserNumberInput(stringUserInput);
             ArrayList<Integer> userNumberList = createUserNumberList(stringUserInput);
