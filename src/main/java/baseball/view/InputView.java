@@ -1,5 +1,10 @@
 package baseball.view;
 
-public class InputView {
+import java.util.List;
+
+public interface InputView {
+    List<Integer> getNumbers();
+
+    int getRestartAnswer();
 
 }

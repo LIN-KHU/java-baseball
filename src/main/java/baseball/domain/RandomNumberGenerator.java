@@ -1,0 +1,28 @@
+package baseball.domain;
+
+import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
+import java.util.List;
+
+public class RandomNumberGenerator {
+    public static final int START_INCLUSIVE = 1;
+    public static final int END_INCLUSIVE = 9;
+
+    public RandomNumberGenerator() {
+    }
+
+    public List<Integer> makeRandomNumbers() {
+        List<Integer> randNumbers = new ArrayList<>();
+        do {
+            int randNum = makeRandomNumberInRange();
+            if (!randNumbers.contains(randNum)) {
+                randNumbers.add(randNum);
+            }
+        } while (randNumbers.size() < BallNumber.NUMBER_MAX_LENGTH);
+        return randNumbers;
+    }
+
+    public int makeRandomNumberInRange() {
+        return Randoms.pickNumberInRange(START_INCLUSIVE, END_INCLUSIVE);
+    }
+}
