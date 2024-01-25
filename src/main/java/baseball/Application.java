@@ -4,7 +4,6 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import static baseball.view.InputView.askContinueGame;
 import static baseball.view.InputView.getUserInput;
-import static baseball.view.OutputView.printIntroMessage;
 import static baseball.view.OutputView.printResult;
 
 public class Application {
