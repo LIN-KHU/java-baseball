@@ -1,7 +1,12 @@
 package baseball;
 
+import baseball.view.InputView;
+import static baseball.view.OutputView.checkResult;
+
 public class Application {
     public static void main(String[] args) {
-        //TODO: 숫자 야구 게임 구현
+        Computer.genRandomNum();
+        InputView.getInput();
+        checkResult();
     }
 }
