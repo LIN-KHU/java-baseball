@@ -8,11 +8,10 @@ public class Result {
     private int strike;
     private boolean isNothing;
 
-    public Result(int ball, int strike) {
-        this.ball = ball;
-        this.strike = strike;
+    public Result() {
+        this.ball = 0;
+        this.strike = 0;
         this.isNothing = false;
-
     }
 
     public int getBall() {
@@ -27,7 +26,15 @@ public class Result {
         return isNothing;
     }
 
-    public void updateNothing() {
+    public void updateBall() {
+        this.ball+=1;
+    }
+
+    public void updateStrike() {
+        this.strike+=1;
+    }
+
+    public void updateIsNothing() {
         if (this.ball == 0 && this.strike == 0) {
             this.isNothing = true;
         }

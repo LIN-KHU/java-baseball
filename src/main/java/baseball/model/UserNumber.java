@@ -35,25 +35,22 @@ public class UserNumber {
     /**
      * 숫자는 같지만 자릿수가 다른경우
      */
-    public int countBall(List<Integer> computerNumber, int ball) {
+    public void countBall(List<Integer> computerNumber, Result result) {
         for (int i = 0; i < computerNumber.size(); i++) {
             for (int j = 0; j < 3; j++) {
                 if (i != j && computerNumber.get(i) == Character.getNumericValue(this.userNum.charAt(j))) {
-                    ball += 1;
+                    result.updateBall();
                 }
             }
         }
-        return ball;
-
     }
 
-    public int countStrike(List<Integer> computerNumber, int strike) {
+    public void countStrike(List<Integer> computerNumber, Result result) {
         for (int i = 0; i < computerNumber.size(); i++) {
             if(computerNumber.get(i) == Character.getNumericValue(this.userNum.charAt(i))){
-                strike += 1;
+                result.updateStrike();
             }
         }
-        return strike;
     }
 
 
