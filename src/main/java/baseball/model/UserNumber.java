@@ -4,15 +4,13 @@ import baseball.validate.ValidateUserNumber;
 
 import java.util.List;
 
-/**
- * 여기서 strike, ball 계산완료할것
- */
 public class UserNumber {
     private String userNum;
 
     public UserNumber(String userNum) {
         ValidateUserNumber.isNumber(userNum);
         ValidateUserNumber.is3DigitNumber(userNum);
+        ValidateUserNumber.isDulplicateDigit(userNum);
         this.userNum = userNum;
     }
 
